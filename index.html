@@ -11,7 +11,6 @@
     Fore more details:
     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
   -->
-  <base href="https://github.com/HeptagonKor/web">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -28,7 +27,17 @@
 
   <title>kumyang_hr</title>
   <link rel="manifest" href="manifest.json">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6NkF0k_V1sX4q6zeQltRh2JcPPuRwTc0"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6NkF0k_V1sX4q6zeQltRh2JcPPuRwTc0&allback=initMap">
+    async function initMap() {
+      const { Map } = await google.maps.importLibrary("maps");
+
+      map = new Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+      });
+
+    }
+  </script>
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
@@ -37,7 +46,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=1785377425');
+        navigator.serviceWorker.register('flutter_service_worker.js?v=653576318');
       });
     }
   </script>
